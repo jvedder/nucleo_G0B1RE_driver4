@@ -6,7 +6,7 @@
   ******************************************************************************
   * @attention
   *
-  * Copyright (c) 2023 STMicroelectronics.
+  * Copyright (c) 2024 STMicroelectronics.
   * All rights reserved.
   *
   * This software is licensed under terms that can be found in the LICENSE file
@@ -18,6 +18,8 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
+#include "dac.h"
+//#include "tim.h"
 #include "usart.h"
 #include "gpio.h"
 
@@ -61,11 +63,6 @@ void SystemClock_Config(void);
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
 
-/**
-  * @brief  Finish configuring, enable interrupts, and start TIM1.
-  * @retval none
-  */
-
 /* USER CODE END 0 */
 
 /**
@@ -98,6 +95,7 @@ int main(void)
   MX_GPIO_Init();
   MX_USART2_UART_Init();
   //MX_TIM1_Init();
+  MX_DAC1_Init();
   /* USER CODE BEGIN 2 */
 
   printf("\r\n\r\n** Booted **\r\n");
