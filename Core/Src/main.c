@@ -104,6 +104,13 @@ int main(void)
   /* Start TIM1 */
   printf("Starting TIM1\r\n");
   TIM1_Init();
+
+  HAL_DAC_Start(&hdac1, DAC_CHANNEL_1);
+  // Data = (0.25V / 3.3V) * 4095 =  310
+  // Data = (0.50V / 3.3V) * 4095 =  620
+  // Data = (1.00V / 3.3V) * 4095 = 1240
+  HAL_DAC_SetValue(&hdac1, DAC_CHANNEL_1, DAC_ALIGN_12B_R, 620);
+
   /* USER CODE END 2 */
 
   /* Infinite loop */
