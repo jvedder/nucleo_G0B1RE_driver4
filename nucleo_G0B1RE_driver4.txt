@@ -1,0 +1,106 @@
+Configuration	nucleo_G0B1RE_driver4
+STM32CubeMX 	6.10.0
+Date	07/22/2024
+MCU	STM32G0B1RETx
+
+
+
+PERIPHERALS	MODES	FUNCTIONS	PINS
+DAC1	only external pin	DAC1_OUT1	PA4
+RCC	BYPASS Clock Source	RCC_OSC_IN	PF0-OSC_IN (PF0)
+RCC	Crystal/Ceramic Resonator	RCC_OSC32_IN	PC14-OSC32_IN (PC14)
+RCC	Crystal/Ceramic Resonator	RCC_OSC32_OUT	PC15-OSC32_OUT (PC15)
+RCC	Clock-out-2	RCC_MCO_2	PB2
+SYS	Serial Wire	SYS_SWCLK	PA14-BOOT0
+SYS	Serial Wire	SYS_SWDIO	PA13
+SYS	SysTick	SYS_VS_Systick	VP_SYS_VS_Systick
+SYS	Dead Battery Signals disabled	SYS_VS_DBSignals	VP_SYS_VS_DBSignals
+TIM1	Internal Clock	TIM1_VS_ClockSourceINT	VP_TIM1_VS_ClockSourceINT
+TIM1	Output Compare CH1	TIM1_CH1	PA8
+TIM1	Output Compare CH2	TIM1_CH2	PA9
+TIM1	Output Compare CH3	TIM1_CH3	PB6
+TIM1	Output Compare CH4	TIM1_CH4	PC11
+USART2	Asynchronous	USART2_RX	PA3
+USART2	Asynchronous	USART2_TX	PA2
+
+
+
+Pin Nb	PINs	FUNCTIONs	LABELs
+1	PC11	TIM1_CH4	
+3	PC13	GPIO_Input	BTN_USER
+4	PC14-OSC32_IN (PC14)	RCC_OSC32_IN	
+5	PC15-OSC32_OUT (PC15)	RCC_OSC32_OUT	
+10	PF0-OSC_IN (PF0)	RCC_OSC_IN	MCO
+19	PA2	USART2_TX	STLINK_TX
+20	PA3	USART2_RX	STLINK_RX
+21	PA4	DAC1_OUT1	
+22	PA5	GPIO_Output	LED_GREEN
+29	PB2	RCC_MCO_2	
+36	PA8	TIM1_CH1	
+37	PA9	TIM1_CH2	
+45	PA13	SYS_SWDIO	TMS
+46	PA14-BOOT0	SYS_SWCLK	TCK
+60	PB6	TIM1_CH3	
+PERIPHERALS	MODES	FUNCTIONS	PINS
+DAC1	only external pin	DAC1_OUT1	PA4
+RCC	BYPASS Clock Source	RCC_OSC_IN	PF0-OSC_IN (PF0)
+RCC	Crystal/Ceramic Resonator	RCC_OSC32_IN	PC14-OSC32_IN (PC14)
+RCC	Crystal/Ceramic Resonator	RCC_OSC32_OUT	PC15-OSC32_OUT (PC15)
+RCC	Clock-out-2	RCC_MCO_2	PB2
+SYS	Serial Wire	SYS_SWCLK	PA14-BOOT0
+SYS	Serial Wire	SYS_SWDIO	PA13
+SYS	SysTick	SYS_VS_Systick	VP_SYS_VS_Systick
+SYS	Dead Battery Signals disabled	SYS_VS_DBSignals	VP_SYS_VS_DBSignals
+TIM1	Internal Clock	TIM1_VS_ClockSourceINT	VP_TIM1_VS_ClockSourceINT
+TIM1	Output Compare CH1	TIM1_CH1	PA8
+TIM1	Output Compare CH2	TIM1_CH2	PA9
+TIM1	Output Compare CH3	TIM1_CH3	PB6
+TIM1	Output Compare CH4	TIM1_CH4	PC11
+USART2	Asynchronous	USART2_RX	PA3
+USART2	Asynchronous	USART2_TX	PA2
+
+
+
+Pin Nb	PINs	FUNCTIONs	LABELs
+1	PC11	TIM1_CH4	
+3	PC13	GPIO_Input	BTN_USER
+4	PC14-OSC32_IN (PC14)	RCC_OSC32_IN	
+5	PC15-OSC32_OUT (PC15)	RCC_OSC32_OUT	
+10	PF0-OSC_IN (PF0)	RCC_OSC_IN	MCO
+19	PA2	USART2_TX	STLINK_TX
+20	PA3	USART2_RX	STLINK_RX
+21	PA4	DAC1_OUT1	
+22	PA5	GPIO_Output	LED_GREEN
+29	PB2	RCC_MCO_2	
+36	PA8	TIM1_CH1	
+37	PA9	TIM1_CH2	
+45	PA13	SYS_SWDIO	TMS
+46	PA14-BOOT0	SYS_SWCLK	TCK
+60	PB6	TIM1_CH3	
+
+
+
+SOFTWARE PROJECT
+
+Project Settings : 
+Project Name : nucleo_G0B1RE_driver4
+Project Folder : C:\Users\John\code\STM32CubeIDE\PBM_Device_Code\nucleo_G0B1RE_driver4
+Toolchain / IDE : STM32CubeIDE
+Firmware Package Name and Version : STM32Cube FW_G0 V1.6.1
+
+
+Code Generation Settings : 
+STM32Cube MCU packages and embedded software packs : Copy only the necessary library files
+Generate peripheral initialization as a pair of '.c/.h' files per peripheral : Yes
+Backup previously generated files when re-generating : No
+Delete previously generated files when not re-generated : Yes
+Set all free pins as analog (to optimize the power consumption) : No
+
+
+Toolchains Settings : 
+Compiler Optimizations : 
+
+
+
+
+

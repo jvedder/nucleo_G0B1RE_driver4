@@ -106,15 +106,23 @@ int main(void)
   TIM1_Init();
 
   HAL_DAC_Start(&hdac1, DAC_CHANNEL_1);
-  // Data = (0.25V / 3.3V) * 4095 =  310
-  // Data = (0.50V / 3.3V) * 4095 =  620
-  // Data = (1.00V / 3.3V) * 4095 = 1240
-  HAL_DAC_SetValue(&hdac1, DAC_CHANNEL_1, DAC_ALIGN_12B_R, 620);
+
+  uint32_t dac = 0;
+  HAL_DAC_SetValue(&hdac1, DAC_CHANNEL_1, DAC_ALIGN_12B_R, dac);
+
+  // DAC Step Size = 200 mA per button push
+  //      (200 mA * .501 ohms) / 3.3V * 4095 = 124 LSBs
+  const uint32_t DAC1_step_size = 124;
+  const uint32_t DAC1_max_value = (DAC1_step_size * 5);
+  printf("DAC Step Size: %2ld\r\n", DAC1_step_size);
+  printf("DAC Max Value: %2ld\r\n", DAC1_max_value);
+  printf("\r\n");
 
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
+
 
   while (1)
   {
@@ -138,8 +146,10 @@ int main(void)
 	  if (btn == 0)
 	  {
 		  printf("button pressed\r\n");
-		  printf("polarity_fault: %2lX\r\n", polarity_fault);
-		  printf("tim1_running: %ld\r\n", tim1_running);
+		  dac = dac + DAC1_step_size;
+		  if (dac > DAC1_max_value) dac = 0;
+		  HAL_DAC_SetValue(&hdac1, DAC_CHANNEL_1, DAC_ALIGN_12B_R, dac);
+		  printf("DAC value: %2ld\r\n", dac);
 		  printf("\r\n");
 
           /* button switch debounce time */

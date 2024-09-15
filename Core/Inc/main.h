@@ -77,6 +77,12 @@ void Error_Handler(void);
 
 /* USER CODE BEGIN Private defines */
 
+
+/**
+ * TIM1 Clock Definitions
+ **/
+
+/* TIM1 GPIOs Ports/Pins */
 #define TIM1_CH1_GPIO_Port GPIOA
 #define TIM1_CH1_Pin  GPIO_PIN_8
 #define TIM1_CH2_GPIO_Port GPIOA
@@ -86,24 +92,33 @@ void Error_Handler(void);
 #define TIM1_CH4_GPIO_Port GPIOC
 #define TIM1_CH4_Pin  GPIO_PIN_11
 
+/* Set TIM1 ticks = 64MHz / 16 = 4MHz */
+#define TIM1_PRESCALER (16-1)
+/* TIM1 Period is 10 mS (Caution:16-bit value) */
+#define TIM1_PERIOD		(40000)
+/* Distribute strobes equally over first 1 mS (4000 ticks) */
+#define TIM1_CCR1_RISE	(   0)
+#define TIM1_CCR2_RISE	(1000)
+#define TIM1_CCR3_RISE	(2000)
+#define TIM1_CCR4_RISE	(3000)
+/* IR Pulse is 100 uS */
+#define TIM_IR_PULSE_WIDTH (400)
+/* RED Pulse is 10uS */
+#define TIM_RED_PULSE_WIDTH (40)
 
-#define TIM1_PERIOD		(64000)
-#define TIM1_CCR1_RISE	(    0)
-#define TIM1_CCR2_RISE	( 8000)
-#define TIM1_CCR3_RISE	(16000)
-#define TIM1_CCR4_RISE	(24000)
-#define TIM1_CCR1_FALL	(TIM1_CCR1_RISE + 3200)
-#define TIM1_CCR2_FALL	(TIM1_CCR2_RISE + 3200)
-#define TIM1_CCR3_FALL	(TIM1_CCR3_RISE + 3200)
-#define TIM1_CCR4_FALL	(TIM1_CCR4_RISE + 3200)
-
+#define TIM1_CCR1_FALL	(TIM1_CCR1_RISE + TIM_IR_PULSE_WIDTH)
+#define TIM1_CCR2_FALL	(TIM1_CCR2_RISE + TIM_RED_PULSE_WIDTH)
+#define TIM1_CCR3_FALL	(TIM1_CCR3_RISE + TIM_IR_PULSE_WIDTH)
+#define TIM1_CCR4_FALL	(TIM1_CCR4_RISE + TIM_RED_PULSE_WIDTH)
 
 #define TIM1_CCR1_FAULT	(0x01)
 #define TIM1_CCR2_FAULT	(0x02)
 #define TIM1_CCR3_FAULT	(0x04)
 #define TIM1_CCR4_FAULT	(0x08)
 
-
+/**
+ * Utility Macros
+ */
 #define IS_GPIO_PIN_HIGH(PORT, PIN)  ( ((PORT)->IDR & (PIN)) == (PIN) )
 #define IS_GPIO_PIN_LOW(PORT, PIN)   ( ((PORT)->IDR & (PIN)) == (0x0UL) )
 

@@ -48,7 +48,7 @@ void TIM1_Init( void )
 
     /*set the timer period */
     TIM1->ARR = TIM1_PERIOD;
-    TIM1->PSC = 1;
+    TIM1->PSC = TIM1_PRESCALER;
     TIM1->RCR = 0;
 
     /* Set Output Compare Toggle Mode for all 4 channels:
