@@ -8,8 +8,7 @@ Release/
 #ignore the debug launch 
 *.launch
 
-#ignore the Excel files
-*.xlsx
+#ignore the Excel temp files
 ~$*.xlsx
 
 #ignore example files

@@ -19,7 +19,6 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "dac.h"
-//#include "tim.h"
 #include "usart.h"
 #include "gpio.h"
 
@@ -94,8 +93,8 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   MX_USART2_UART_Init();
-  //MX_TIM1_Init();
   MX_DAC1_Init();
+  MX_USART1_UART_Init();
   /* USER CODE BEGIN 2 */
 
   printf("\r\n\r\n** Booted **\r\n");
@@ -218,6 +217,11 @@ void SystemClock_Config(void)
 /* USER CODE BEGIN 4 */
 
 #if 0
+/**
+ * Show peripheral registers
+ * base: address of first register
+ * len: length in bytes
+ */
 void show_regs(uint32_t base, uint32_t len)
 {
 	for (uint32_t reg = base; reg <= (base+len); reg+=4)
@@ -227,6 +231,7 @@ void show_regs(uint32_t base, uint32_t len)
 	}
 }
 #endif
+
 
 /**
  * Override this from syscalls.c -- printf() goes to the UART2
