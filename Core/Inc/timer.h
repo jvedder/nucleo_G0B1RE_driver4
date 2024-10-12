@@ -19,7 +19,7 @@ extern "C" {
 #include "main.h"
 
 void TIM1_Init(void);
-void TIM1_GPIO_Init(void);
+void TIM2_Init(void);
 
 
 

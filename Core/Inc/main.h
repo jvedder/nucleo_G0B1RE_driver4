@@ -62,16 +62,28 @@ void Error_Handler(void);
 /* Private defines -----------------------------------------------------------*/
 #define BTN_USER_Pin GPIO_PIN_13
 #define BTN_USER_GPIO_Port GPIOC
-#define MCO_Pin GPIO_PIN_0
-#define MCO_GPIO_Port GPIOF
+#define MCO_IN_Pin GPIO_PIN_0
+#define MCO_IN_GPIO_Port GPIOF
 #define STLINK_TX_Pin GPIO_PIN_2
 #define STLINK_TX_GPIO_Port GPIOA
 #define STLINK_RX_Pin GPIO_PIN_3
 #define STLINK_RX_GPIO_Port GPIOA
+#define TIM2_CHA_Pin GPIO_PIN_2
+#define TIM2_CHA_GPIO_Port GPIOB
+#define LED1_Pin GPIO_PIN_11
+#define LED1_GPIO_Port GPIOB
+#define LED2_Pin GPIO_PIN_12
+#define LED2_GPIO_Port GPIOB
 #define TMS_Pin GPIO_PIN_13
 #define TMS_GPIO_Port GPIOA
 #define TCK_Pin GPIO_PIN_14
 #define TCK_GPIO_Port GPIOA
+#define TIM2_CHB_Pin GPIO_PIN_3
+#define TIM2_CHB_GPIO_Port GPIOB
+#define TIM2_CHC_Pin GPIO_PIN_4
+#define TIM2_CHC_GPIO_Port GPIOB
+#define TIM2_CHD_Pin GPIO_PIN_5
+#define TIM2_CHD_GPIO_Port GPIOB
 
 /* USER CODE BEGIN Private defines */
 
@@ -87,32 +99,48 @@ void Error_Handler(void);
 #define TIM1_CH2_Pin  GPIO_PIN_9
 #define TIM1_CH3_GPIO_Port GPIOB
 #define TIM1_CH3_Pin  GPIO_PIN_6
-#define TIM1_CH4_GPIO_Port GPIOC
+#define TIM1_CH4_GPIO_Port GPIOA
 #define TIM1_CH4_Pin  GPIO_PIN_11
 
 /* Set TIM1 ticks = 64MHz / 16 = 4MHz */
-#define TIM1_PRESCALER (16-1)
-/* TIM1 Period is 10 mS (Caution:16-bit value) */
-#define TIM1_PERIOD		(40000)
+#define TIM1_PRESCALER (16u)
+/* TIM1 Period is 1 mS (Caution:16-bit value) */
+#define TIM1_PERIOD		(4000u)
 /* Distribute strobes equally over first 1 mS (4000 ticks) */
-#define TIM1_CCR1_RISE	(   0)
-#define TIM1_CCR2_RISE	(1000)
-#define TIM1_CCR3_RISE	(2000)
-#define TIM1_CCR4_RISE	(3000)
-/* IR Pulse is 100 uS */
-#define TIM_IR_PULSE_WIDTH (400)
-/* RED Pulse is 10uS */
-#define TIM_RED_PULSE_WIDTH (40)
+#define TIM1_CCR1_RISE	( 500)
+#define TIM1_CCR2_RISE	(1500)
+#define TIM1_CCR3_RISE	(2500)
+#define TIM1_CCR4_RISE	(3500)
+/* IR Pulse width is 25 uS */
+#define TIM_IR_PULSE_WIDTH (100)
 
 #define TIM1_CCR1_FALL	(TIM1_CCR1_RISE + TIM_IR_PULSE_WIDTH)
-#define TIM1_CCR2_FALL	(TIM1_CCR2_RISE + TIM_RED_PULSE_WIDTH)
+#define TIM1_CCR2_FALL	(TIM1_CCR2_RISE + TIM_IR_PULSE_WIDTH)
 #define TIM1_CCR3_FALL	(TIM1_CCR3_RISE + TIM_IR_PULSE_WIDTH)
-#define TIM1_CCR4_FALL	(TIM1_CCR4_RISE + TIM_RED_PULSE_WIDTH)
+#define TIM1_CCR4_FALL	(TIM1_CCR4_RISE + TIM_IR_PULSE_WIDTH)
 
 #define TIM1_CCR1_FAULT	(0x01)
 #define TIM1_CCR2_FAULT	(0x02)
 #define TIM1_CCR3_FAULT	(0x04)
 #define TIM1_CCR4_FAULT	(0x08)
+
+/**
+ * TIM2 Clock Definitions
+ **/
+
+/* TIM2 is same as TIM1 */
+#define TIM2_PRESCALER  TIM1_PRESCALER
+#define TIM2_PERIOD     TIM1_PERIOD
+
+#define TIM2_CCR1_TOGGLE  (   0)
+#define TIM2_CCR2_TOGGLE  (1000)
+#define TIM2_CCR3_TOGGLE  (2000)
+#define TIM2_CCR4_TOGGLE  (3000)
+
+#define TIM2_CCR1_FAULT (0x01)
+#define TIM2_CCR2_FAULT (0x02)
+#define TIM2_CCR3_FAULT (0x04)
+#define TIM2_CCR4_FAULT (0x08)
 
 /**
  * Utility Macros

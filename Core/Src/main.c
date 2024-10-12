@@ -19,6 +19,7 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "dac.h"
+#include "tim.h"
 #include "usart.h"
 #include "gpio.h"
 
@@ -93,7 +94,9 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   MX_USART2_UART_Init();
+  MX_TIM1_Init();
   MX_DAC1_Init();
+  MX_TIM2_Init();
   MX_USART1_UART_Init();
   /* USER CODE BEGIN 2 */
 
@@ -128,7 +131,7 @@ int main(void)
 	  /* light LED if faulted */
 	  if (polarity_fault)
 	  {
-		  HAL_GPIO_WritePin(LED_GREEN_GPIO_Port, LED_GREEN_Pin, GPIO_PIN_SET);
+		  HAL_GPIO_WritePin(LED1_GPIO_Port, LED1_Pin, GPIO_PIN_SET);
 	  }
 
 	  /* verify TIM1 is running */
@@ -137,7 +140,7 @@ int main(void)
 	  if (tim1_running == 0)
 	  {
 	      /* light LED if not running */
-	      HAL_GPIO_WritePin(LED_GREEN_GPIO_Port, LED_GREEN_Pin, GPIO_PIN_SET);
+	      HAL_GPIO_WritePin(LED1_GPIO_Port, LED1_Pin, GPIO_PIN_SET);
 	  }
 
 	  /* if user button pressed */
@@ -211,7 +214,6 @@ void SystemClock_Config(void)
   {
     Error_Handler();
   }
-  HAL_RCC_MCOConfig(RCC_MCO2, RCC_MCO2SOURCE_SYSCLK, RCC_MCO2DIV_64);
 }
 
 /* USER CODE BEGIN 4 */
